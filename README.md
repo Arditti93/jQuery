@@ -1,3 +1,2 @@
 # jQuery
-JQuery
-## A place for all my jQuery tutorials
+A place for all my jQuery tutorials
