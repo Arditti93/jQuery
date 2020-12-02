@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <title>jQuery - Selctors</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Selctors</h1>
+        </header>
+        <div id="container">
+            <h1 id=heading1> Heading One</h1>
+            <p id="para1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ratione cupiditate cum dolore qui nesciunt suscipit maxime error itaque.<span>
+                Aperiam doloribus dolorem nam architecto velit</span>
+                facilis necessitatibus eum illo voluptatum aut!
+            </p>
+
+            <h1 class=heading2> Heading Two</h1>
+            <p class="para2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ratione cupiditate cum dolore qui nesciunt suscipit maxime error itaque.<span>
+                Aperiam doloribus dolorem nam architecto velit</span>
+                facilis necessitatibus eum illo voluptatum aut!
+            </p>
+
+            <ul id="list">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+                <li>Item 6</li>
+                <li>Item 7</li>
+            </ul>
+    
+
+            <input type="button" value="button 1">
+            <input type="submit" value="submit 1">
+            <input type="text"> 
+            <br>
+            <br>
+            <a 
+            href="http://google.com" 
+            target="_blank">
+            Google
+            </a>
+            <a 
+            href="http://bbc.com" 
+            target="_blank">
+            BBC
+            </a>
+
+            <p id=hide>If you click on me, I will disappear.</p>
+            <p id=hide>If you click on me, I will disappear.</p>
+            <p id=hide>If you click on me, I will disappear.</p>
+        </div>
+        <script>
+            //hides all h1 tags 
+            // $("h1").hide()
+
+            // # represents id 
+            //hides h1 tags with the id of heading 1
+            // $('h1#heading1').hide()
+
+            // .represents class
+            //hides classes with the heading of heading 2 
+            // $('.heading2').hide()
+
+            //changes color of text inside span tag within a pharagrpah tag. 
+            $('p span').css('color', 'red')
+            //remove 'p' to selct all span tags
+
+            //ul with an id of list and li first item changes to blue
+            // $('ul#list li:first').css('color', 'blue')
+
+            //ul with an id of list and li last item changes to blue
+            // $('ul#list li:last').css('color', 'green')
+
+            // ul with an id of list and even number li, background color changes to green 
+            $('ul#list li:even').css('background-color', 'green')
+
+            //ul with an id of list and odd number li, background color changes to green 
+            $('ul#list li:odd').css('background-color', 'grey')
+
+            //bullets removed on every 3rd li item inside ul tag with an id of list 
+            $('ul#list li:nth-child(3n)').css('list-style', 'none')
+
+            //hides input with a value of submit
+            // $(':submit').hide()
+
+            //hides input with a value of button
+            // $(':button').hide() 
+
+            //hides input with a value of text
+            //  $(':text').hide() 
+
+            //tareted link wwith href, change to red
+            $('[href]').css('color', 'red')
+
+            //tareted link wwith href and url, change to grey
+            $('a[href="http://bbc.com"]').css('color', 'grey')
+
+            //selects everything
+            // $('*').hide()
+
+            //pharagrphs with an id of hide, hidden on click
+            $('p#hide').click(function(){
+                $(this).hide()
+            })
+        </script>
+    </body>
+</html>
