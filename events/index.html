@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <title>jQuery - Events</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            //jquery inside document ready function if script inside
+            //head tags
+            //*dont run script until the document loads*
+
+            // $(document).ready(function(){
+            //     $('#btn1').click(function(){
+            //         alert('Button Clicked')
+            //     })
+    
+            // })
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Events</h1>
+        </header>
+        <div id="container">
+                <h1 id="coords"></h1>
+                <hr>
+                <h3>Mouse Events</h3>
+                <button id="btn1">Button 1</button>
+                <button id="btn2">Button 2</button>
+                <p class="para1">
+                    Lorem ipsum dolor sit amet consectetur, 
+                    adipisicing elit. In libero, suscipit facilis 
+                    perspiciatis obcaecati, repudiandae reprehenderit 
+                    nesciunt voluptate, doloribus aliquam nostrum. 
+                    Officia qui dignissimos aspernatur accusantium. 
+                    Dicta et laborum doloremque?
+                </p>
+                <hr>
+                <form id="form2">
+                        <label>Name</label><br>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                        >
+                        <br>
+                        <label>Email</label><br>
+                        <input 
+                            type="text" 
+                            id="email" 
+                            name="email"
+                        >
+                        <br>
+                        <!-- <label>Topping</label><br> -->
+                        <!-- <select 
+                            id="gender" 
+                            name="gender"
+                        >
+                        <option value="cheese">cheese</option>
+                        <option value="meat">meat</option>
+                        </select> -->
+                        <input 
+                        type="submit"
+                        value="Submit"
+                        >
+            </form>
+            <h2 id=user></h2>
+                <hr>
+                <div id="likes">
+                    <span class="figure"></span>
+                </div>
+                <button type="button" id="like">Like</button>
+        </div>
+        <script>
+            //when button clicked with an id of btn1
+            //pop up alert
+            $(document).ready(function(){
+                //god practise to wrap jquery in document.ready
+                // $('#btn1').click(function(){
+                //     alert('Button Clicked')
+                // })
+                //works the same as perivous function
+                // $('#btn1').on('click', function(){
+                //     alert('Button Clicked')
+                // })
+
+                //button 1 hides p tag with a class of para1
+                // $('#btn1').click(function(){
+                //     $('.para1').hide()
+                // })
+
+                //button 2 shows p tag with a class of para1
+                // $('#btn2').click(function(){
+                //     $('.para1').show()
+                // })
+
+                //button 1 toggles p tag with a class of para1 on and off 
+                // $('#btn1').click(function(){
+                //     $('.para1').toggle()
+                // })
+
+                //double click para 1 changes text to the colour 
+                //of red
+                // $('#btn1').dblclick(function(){
+                //     $('.para1').css('color', 'red')
+                // })
+
+                //double click button 1 and toggle para 1 on and off 
+                // $('#btn1').dblclick(function(){
+                //     $('.para1').toggle()
+                // })
+
+                //hover over button1 and para1 on and off
+                // $('#btn1').hover(function(){
+                //     $('.para1').toggle()
+                // })
+                //long hand of hover event 
+                // $('#btn1').on('mouseenter', function(){
+                //     $('.para1').toggle()
+                // })
+                // $('#btn1').on('mouseleave', function(){
+                //     $('.para1').toggle()
+                // })
+
+                //toggles para1 on and off when moving the mouse over 
+                //the button 
+
+                // $('#btn1').on('mousemove', function(){
+                //     $('.para1').toggle()
+                // })
+
+
+                //when button 1 clicked and held down, para 1 off 
+                //click off para 1 on 
+                $('#btn1').on('mousedown', function(e){
+                    e.preventDefault()
+                    $('.para1').fadeToggle().css('color', 'black')
+                })
+                $('#btn1').on('mouseup', function(e){
+                    e.preventDefault()
+                    $('.para1').fadeToggle().css('color', 'red')
+                })
+
+
+                //log click information to the browser 
+                $('#btn1').click(function(e){
+                    console.log(e)
+                })
+
+                //show id,inner and outer HTML of button as an alert
+                // $('#btn1').click(function(e){
+                //     // alert(e.currentTarget.id)
+                //     // alert(e.currentTarget.innerHTML)
+                //     // alert(e.currentTarget.outerHTML)
+                //     // alert(e.currentTarget.className)
+                // })
+
+                //mouse Coords displaying inside body 
+                $(document).on('mousemove', function(e){
+				$('#coords').html('Coords: Y: '+e.clientY+" X: "+e.clientX);
+                });
+                
+                $('input ').focus(function(){
+                    // alert('focus')ith a id of name
+                    //input w
+                    // $('input#name').css('background', 'pink')
+                    $(this).css('background', 'pink')
+                })
+
+                //blur opposite of focus
+                $('input ').blur(function(){
+                    $(this).css('background', 'white')
+                })
+
+                //consoles in the browser key inputs  from form with a tag of input
+                $('input').keyup(function(e){
+                    // console.log('keyup')
+                    console.log(e.target.value)
+                })
+
+                //displays key input from input tag 
+                // $(document).on('keyup', function(e){
+                // $('#form').html(e.target.value)
+                // })
+
+                //like button 
+                var clicks = 0; 
+                $("#like").click(function(){ 
+                    clicks++; 
+                    $('.figure').html(clicks);
+                })
+
+                //displays topping
+                // $('select#gender').change(function(e){
+                //     // alert(e.target.value)
+                //     $('p#gender').html(e.target.value)
+                // })
+                $('#form2').submit(function(e){
+				e.preventDefault();
+                var name = $('input#name').val();
+                $('#user').html('Hello: '+name)
+			    });
+            })
+        </script>
+    </body>
+</html>
