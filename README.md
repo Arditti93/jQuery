@@ -2,7 +2,7 @@
 A place for all my jQuery tutorials
 
 
-## notes
+# Notes
 The jQuery syntax is tailor-made for selecting HTML elements and performing some action on the element(s).
 
 Basic syntax is: `$(selector).action()`
