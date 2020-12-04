@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Effects and Aniation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Effects and Animation</h1>
+        </header>
+        <div id="container">
+            <button id="btnFadeOut">Fade Out</button>
+            <button id="btnFadeIn">Fade In</button>
+            <button id="btnFadeTog">Fade Toggle</button>
+
+
+            <hr>
+
+            <div id=box>
+                <h1>Hello World</h1>
+            </div>
+
+            <hr>
+
+            <button id="btnSlideUp">Slide Up</button>
+            <button id="btnSlideDown">Slide Down</button>
+            <button id="btnSlideTog">Slide Toggle</button>
+            <button id="btnStop">Slide Stop</button>
+
+            <br>
+            <br>
+
+            <button id="moveLeft">Move Left</button>
+            <button id="moveRight">Move Right</button>
+            <button id="moveAround">Move Around</button>
+            <hr>
+            <div id=box2>
+            </div>
+
+        </div>
+
+        <script>
+            $(document).ready(function(){
+
+                //fades box out by accessing id
+                // $('#btnFadeOut').click(function(){
+                //     $('#box').fadeOut()
+                // })
+
+                //fades out box fast
+                // $('#btnFadeOut').click(function(){
+                //     $('#box').fadeOut('fast')
+                // })
+
+                //fades out box slowly 
+                // $('#btnFadeOut').click(function(){
+                //     $('#box').fadeOut('slow')
+                // })
+
+
+                //set fade out peramiters in milliseconds for more precise options 
+                // $('#btnFadeOut').click(function(){
+                //     $('#box').fadeOut(3000)
+                // })
+
+                //text inside div with the id of box fades out then once faded out the button with the id of btnFadeOut changes to new text 
+                $('#btnFadeOut').click(function(){
+                    $('#box').fadeOut(3000, function(){
+                        $('#btnFadeOut').text('new text')
+                    })
+                })
+
+                // //fades the div with the id of box back in 
+                $('#btnFadeIn').click(function(){
+                    $('#box').fadeIn(3000)
+                })
+
+                //toggles div with a id of box in and out 
+                $('#btnFadeTog').click(function(){
+                    $('#box').fadeToggle(3000)
+                })
+
+                //fades in div with the id of box on page load
+                $('#box').css('display', 'none')
+                $('#box').fadeIn(3000)
+
+
+                //div with an id box slides down and disappears
+                $('#btnSlideDown').click(function(){
+                    $('#box').slideDown(3000)
+                })
+
+                //div with an id box slides up and disappears
+                $('#btnSlideUp').click(function(){
+                    $('#box').slideUp(3000)
+                })
+
+                //div with an id box toggles up and down disappears
+                $('#btnSlideTog').click(function(){
+                    $('#box').slideToggle(3000)
+                })
+
+                //div with an id box stops on slide
+                $('#btnStop').click(function(){
+                    $('#box').stop()
+                })
+
+                //div with an id of box 2 moves 500px to the right
+                $('#moveRight').click(function(){
+                    $('#box2').animate({
+                        left: 500,
+                        height: '300px',
+                        width: '300px',
+                        opacity: '0.5'
+                    })
+                })
+                //div with an id of box 2 moves back to its orginal positon
+                $('#moveLeft').click(function(){
+                    $('#box2').animate({
+                        left: 0,
+                        height: '100px',
+                        width: '100px',
+                        opacity: '1'
+                    })
+                })
+
+                //moves div with an id of bx 2 around in a sqaure
+                $('#moveAround').click(function(){
+                    var box = $('#box2')
+                    box.animate({
+                        left: 300
+
+                    })
+                    box.animate({
+                        top: 300
+                    
+                    })
+                    box.animate({
+                        left: 0,
+                        top: 300
+                        
+                    })
+                    box.animate({
+                        left: 0,
+                        top: 0
+                        
+                    })
+                })
+            })
+        </script>
+        
+    </body>
+</html>
